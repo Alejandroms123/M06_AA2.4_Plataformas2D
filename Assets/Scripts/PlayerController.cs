@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float wallJumpTimer = _playerJump._wallJumpTimer;
+        float wallJumpTimer = _characterJump._wallJumpTimer;
 
         if (wallJumpTimer <= 0f)
         {
