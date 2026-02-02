@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CharacterJump : MonoBehaviour
 {
-
     [SerializeField, Range(0f, 1f)] private float _jumpCancelVelMultiplier;
 
     [Space(10)]
