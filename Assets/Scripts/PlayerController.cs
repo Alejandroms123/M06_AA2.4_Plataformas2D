@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
 
     public float _lastMoveDir { get; private set; }
+    public bool HasMoved { get; private set; } = false;
+
 
     private bool _isGrounded;
     private bool _isOnwall;
@@ -25,6 +27,11 @@ public class PlayerController : MonoBehaviour
 
         _moveInput = _playerInput._moveInput;
         _lastMoveDir = (_moveInput != 0) ? Mathf.Sign(_moveInput) : _lastMoveDir;
+
+        if (!HasMoved && Mathf.Abs(_moveInput) > 0.01f)
+        {
+            HasMoved = true;
+        }
 
         _isGrounded = _characterCheck.IsGrounded(_col, _rb);
         _isOnwall = _characterCheck.IsOnWall(_col, _rb, _lastMoveDir);
