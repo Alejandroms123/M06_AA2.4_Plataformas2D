@@ -13,9 +13,9 @@ public class CountdownTimer : MonoBehaviour
     private bool timerStarted = false;
 
     [Header("Referencias")]
-    public TextMeshProUGUI timerText; // Asignar un Text (UI) desde el inspector
-    public PlayerController playerController; // Arrastrar el Player en el inspector
-    public GameObject playerObject; // El GameObject completo del jugador
+    public TextMeshProUGUI timerText;
+    public PlayerController playerController; 
+    public GameObject playerObject; 
 
     private void Start()
     {
@@ -55,7 +55,7 @@ public class CountdownTimer : MonoBehaviour
     {
         if (playerObject != null)
         {
-            playerObject.SetActive(false); // Desaparece el jugador (simula "explosión")
+            playerObject.SetActive(false); // Muere el Player 
         }
 
         Invoke(nameof(RestartScene), 1f); // Espera 1 segundo y reinicia
