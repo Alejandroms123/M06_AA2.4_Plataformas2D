@@ -1,7 +1,4 @@
-
-
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -14,8 +11,8 @@ public class CountdownTimer : MonoBehaviour
 
     [Header("Referencias")]
     public TextMeshProUGUI timerText;
-    public PlayerController playerController; 
-    public GameObject playerObject; 
+    public PlayerController playerController;
+    public GameObject playerObject;
 
     private void Start()
     {
@@ -24,7 +21,7 @@ public class CountdownTimer : MonoBehaviour
 
     private void Update()
     {
-        if (!timerStarted && playerController.HasMoved)
+        if (!timerStarted && PlayerController.instance.hasMoved)
         {
             timerStarted = true;
         }

@@ -1,50 +1,34 @@
 using UnityEngine;
 
-public class CharacterJump : MonoBehaviour
+public class PlayerJump : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)] private float _jumpCancelVelMultiplier;
 
-    [Space(10)]
-
+    [Header("Jump properties")]
     [SerializeField, Range(0f, 20f)] private float _jumpForce;
+    [SerializeField, Range(0f, 1f)] private float _jumpCancelVelMultiplier;
     [SerializeField, Range(0f, 1f)] private float _jumpBufferTime;
     [SerializeField, Range(0f, 1f)] private float _coyoteTime;
 
-    [Space(10)]
-
+    [Space(10), Header("Walljump properties")]
     [SerializeField, Range(0f, 10f)] private float _wallSlideSpeed;
-    [SerializeField, Range(0f, 1f)] private float _wallJumpTime;
     [SerializeField] private Vector2 _wallJumpDir;
-
-    [HideInInspector] public float _wallJumpTimer { get; private set; }
 
     private float _jumpBufferTimer;
     private float _coyoteTimer;
 
-    public void UpdateJumpBuffers(bool jumpPressed, bool isGrounded, bool isOnWall)
+    public void UpdateJump(bool jumpPressed, bool isGrounded)
     {
         _jumpBufferTimer = jumpPressed ? _jumpBufferTime : Mathf.Max(0f, _jumpBufferTimer - Time.deltaTime);
         _coyoteTimer = isGrounded ? _coyoteTime : Mathf.Max(0f, _coyoteTimer - Time.deltaTime);
-        _wallJumpTimer = (_wallJumpTimer > 0f) ? Mathf.Max(0f, _wallJumpTimer - Time.deltaTime) : 0f;
     }
 
     public void JumpCancel(Rigidbody2D rb, bool jumpHeld)
     {
         if (!jumpHeld && rb.linearVelocity.y > 0f)
-        {
             rb.linearVelocityY *= _jumpCancelVelMultiplier;
-        }
     }
 
-    public void WallSlide(Rigidbody2D rb, bool isGrounded, bool isOnWall)
-    {
-        if (!isGrounded && isOnWall && rb.linearVelocity.y < _wallSlideSpeed)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -_wallSlideSpeed);
-        }
-    }
-
-    public void HandleJump(Rigidbody2D rb, bool isGrounded, bool isOnWall, float lastMoveDir)
+    public void HandleJump(Rigidbody2D rb, bool isWallJump, float lastMoveDir)
     {
         Vector2 dir;
 
@@ -55,11 +39,10 @@ public class CharacterJump : MonoBehaviour
                 dir = new Vector2(rb.linearVelocity.x, _jumpForce);
                 Jump(rb, dir);
             }
-            else if (!isGrounded && isOnWall)
+            else if (isWallJump)
             {
                 dir = new Vector2(_wallJumpDir.x * _jumpForce * -lastMoveDir, _wallJumpDir.y * _jumpForce);
                 Jump(rb, dir);
-                _wallJumpTimer = _wallJumpTime;
             }
         }
     }
@@ -69,5 +52,10 @@ public class CharacterJump : MonoBehaviour
         rb.linearVelocity = dir;
         _jumpBufferTimer = 0f;
         _coyoteTimer = 0f;
+    }
+
+    public void WallSlide(Rigidbody2D rb)
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocityX, -_wallSlideSpeed);
     }
 }

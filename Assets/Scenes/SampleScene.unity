@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 458362891682722824, guid: a0c414cd09eaf9a4abbb9c6175816018, type: 3}
       propertyPath: m_Name
-      value: CinemachineCamera
+      value: CameraCM
       objectReference: {fileID: 0}
     - target: {fileID: 5247912840820781450, guid: a0c414cd09eaf9a4abbb9c6175816018, type: 3}
       propertyPath: Target.TrackingTarget
@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1228367918601462199, guid: 111174ad525a6b2478927576e51504a2, type: 3}
       propertyPath: m_Name
-      value: MainCamera
+      value: CameraMC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -952,11 +952,11 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1920592046}
   - {fileID: 919712791}
   - {fileID: 212081234}
   - {fileID: 2058939751}
   - {fileID: 455477369}
   - {fileID: 1737462966}
-  - {fileID: 1920592046}
   - {fileID: 942571899}
   - {fileID: 537705755}
