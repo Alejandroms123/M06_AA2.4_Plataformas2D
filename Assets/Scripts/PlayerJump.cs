@@ -39,8 +39,9 @@ public class PlayerJump : MonoBehaviour
                 dir = new Vector2(rb.linearVelocity.x, _jumpForce);
                 Jump(rb, dir);
             }
-            else if (isWallJump)
+            else if (isWallJump && StaminaManager.instance.stamina != 0f)
             {
+                StaminaManager.instance.LoseStamina();
                 dir = new Vector2(_wallJumpDir.x * _jumpForce * -lastMoveDir, _wallJumpDir.y * _jumpForce);
                 Jump(rb, dir);
             }

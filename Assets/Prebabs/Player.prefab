@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3045713509408723385}
   - component: {fileID: 715497477500480294}
   - component: {fileID: 4174968133685507167}
-  - component: {fileID: 7866618872972415187}
+  - component: {fileID: 7518990723939849194}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -271,7 +271,7 @@ MonoBehaviour:
   _coyoteTime: 0.12
   _wallSlideSpeed: 1.5
   _wallJumpDir: {x: 1.2, y: 1.2}
---- !u!114 &7866618872972415187
+--- !u!114 &7518990723939849194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,4 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c157ccd8c2855804ebd2b09ab313fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxStamina>k__BackingField: 10
+  <maxStamina>k__BackingField: 1
+  _staminaLoseSpeed: 10
+  _staminaRegenSpeed: 10

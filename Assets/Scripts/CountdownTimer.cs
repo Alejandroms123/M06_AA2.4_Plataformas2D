@@ -14,10 +14,7 @@ public class CountdownTimer : MonoBehaviour
     public PlayerController playerController;
     public GameObject playerObject;
 
-    private void Start()
-    {
-        ResetTimer();
-    }
+    private void Start() { ResetTimer(); }
 
     private void Update()
     {
@@ -40,13 +37,7 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
-    private void UpdateTimerUI()
-    {
-        if (timerText != null)
-        {
-            timerText.text = timeLeft.ToString("F1");
-        }
-    }
+    private void UpdateTimerUI() { if (timerText != null) timerText.text = timeLeft.ToString("F1"); }
 
     private void ExplodeAndRestart()
     {
@@ -58,14 +49,7 @@ public class CountdownTimer : MonoBehaviour
         Invoke(nameof(RestartScene), 1f); // Espera 1 segundo y reinicia
     }
 
-    private void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    private void RestartScene() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
 
-    private void ResetTimer()
-    {
-        timeLeft = timeLimit;
-        UpdateTimerUI();
-    }
+    private void ResetTimer() { timeLeft = timeLimit; UpdateTimerUI(); }
 }
