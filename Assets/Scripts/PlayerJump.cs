@@ -11,6 +11,7 @@ public class PlayerJump : MonoBehaviour
 
     [Space(10), Header("Walljump properties")]
     [SerializeField, Range(0f, 10f)] private float _wallSlideSpeed;
+    [SerializeField, Range(0f, 10f)] private float _climbSpeed;
     [SerializeField] private Vector2 _wallJumpDir;
 
     private float _jumpBufferTimer;
@@ -55,8 +56,15 @@ public class PlayerJump : MonoBehaviour
         _coyoteTimer = 0f;
     }
 
+    public void Climb(Rigidbody2D rb, float dir)
+    {
+        if (dir != 0f)
+            rb.linearVelocityY = dir * _climbSpeed;
+    }
+
     public void WallSlide(Rigidbody2D rb)
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocityX, -_wallSlideSpeed);
+        if (rb.linearVelocityY <= 0f)
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, -_wallSlideSpeed);
     }
 }

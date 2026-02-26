@@ -22,13 +22,14 @@ public class PlayerController : MonoBehaviour
 
     private enum PlayerState
     {
-        BaseState, Dashing, WallSliding
+        OnGround, OnWall
     }
     private PlayerState _currentPlayerState;
 
-    private bool _isGrounded;
-    private bool _isOnWall;
-    private float _moveInput;
+    public bool _isGrounded;
+    public bool _isOnWall;
+    private float _moveXInput;
+    private float _moveYInput;
 
     private void Awake()
     {
@@ -44,16 +45,19 @@ public class PlayerController : MonoBehaviour
     {
         _playerInput.GatherInput();
 
-        _moveInput = _playerInput.moveInput;
-        if (_moveInput != 0)
+        _moveXInput = _playerInput.xInput;
+        _moveYInput = _playerInput.yInput;
+
+        if (_moveXInput != 0)
         {
-            lastMoveDir = Mathf.Sign(_moveInput);
+            lastMoveDir = Mathf.Sign(_moveXInput);
             _playerMovement.FlipSr(_sr, lastMoveDir);
         }
 
         _isGrounded = _playerCheck.IsGrounded(_col, _rb);
         _isOnWall = _playerCheck.IsOnWall(_col, _rb, lastMoveDir);
 
+        StaminaManager.instance.RegenStamina(_isGrounded);
         _playerJump.UpdateJump(_playerInput.jumpPressed, _isGrounded);
 
         UpdatePlayerState();
@@ -69,16 +73,17 @@ public class PlayerController : MonoBehaviour
     {
         switch (_currentPlayerState)
         {
-            case PlayerState.WallSliding:
+            case PlayerState.OnWall:
 
-                _playerMovement.Move(_rb, _moveInput);
+                _playerMovement.MoveX(_rb, _moveXInput);
                 _playerJump.WallSlide(_rb);
+                _playerJump.Climb(_rb, _moveYInput);
                 _playerJump.HandleJump(_rb, !_isGrounded && _isOnWall, lastMoveDir);
                 break;
 
-            case PlayerState.BaseState:
+            case PlayerState.OnGround:
 
-                _playerMovement.Move(_rb, _moveInput);
+                _playerMovement.MoveX(_rb, _moveXInput);
                 _playerJump.HandleJump(_rb, !_isGrounded && _isOnWall, lastMoveDir);
                 _playerJump.JumpCancel(_rb, _playerInput.jumpHeld);
                 break;
@@ -87,21 +92,21 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePlayerState()
     {
-        if (_isOnWall && !_isGrounded && _rb.linearVelocity.y < 0f)
+        if (_isOnWall && !_isGrounded)
         {
-            _currentPlayerState = PlayerState.WallSliding;
+            _currentPlayerState = PlayerState.OnWall;
             return;
         }
 
-        _currentPlayerState = PlayerState.BaseState;
+        _currentPlayerState = PlayerState.OnGround;
     }
 
     private void UpdateAnimatior()
     {
-        _anim.SetFloat("VelocityX", Mathf.Abs(_moveInput));
+        _anim.SetFloat("VelocityX", Mathf.Abs(_moveXInput));
         _anim.SetFloat("VelocityY", _rb.linearVelocityY);
         _anim.SetBool("IsGrounded", _isGrounded);
-        _anim.SetBool("IsWallSliding", _currentPlayerState == PlayerState.WallSliding);
+        _anim.SetBool("IsWallSliding", _currentPlayerState == PlayerState.OnWall);
     }
 
     private void OnDrawGizmos()

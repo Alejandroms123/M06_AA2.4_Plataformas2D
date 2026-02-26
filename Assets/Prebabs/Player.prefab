@@ -211,6 +211,8 @@ MonoBehaviour:
   _anim: {fileID: 6863102952646318841}
   _col: {fileID: 792018923630253996}
   _rb: {fileID: 5758982443546295803}
+  _isGrounded: 0
+  _isOnWall: 0
 --- !u!114 &6984010932483059571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a031af878928145b82f63cfdd9dbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 6
+  _maxXSpeed: 10
   _acceleration: 10
   _deceleration: 6
 --- !u!114 &4174968133685507167
@@ -269,7 +271,8 @@ MonoBehaviour:
   _jumpCancelVelMultiplier: 0.66
   _jumpBufferTime: 0.15
   _coyoteTime: 0.12
-  _wallSlideSpeed: 1.5
+  _wallSlideSpeed: 0.6
+  _climbSpeed: 6
   _wallJumpDir: {x: 1.2, y: 1.2}
 --- !u!114 &7518990723939849194
 MonoBehaviour:
@@ -283,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c157ccd8c2855804ebd2b09ab313fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxStamina>k__BackingField: 1
+  <maxStamina>k__BackingField: 10
   _staminaLoseSpeed: 10
   _staminaRegenSpeed: 10
+  _staminaRegenCooldown: 2
