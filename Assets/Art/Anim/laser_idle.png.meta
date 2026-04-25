@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,9 +124,9 @@ TextureImporter:
       name: laser_idle_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 16
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,9 +134,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a8e7b1b8365181b40800000000000000
+      spriteID: 0a23560be7c454f4088a986ff3838fde
       internalID: 5411098469565431434
       vertices: []
       indices: 
@@ -146,9 +146,9 @@ TextureImporter:
       name: laser_idle_1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 32
         y: 0
-        width: 24
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -156,9 +156,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c61faf1e2162e68f0800000000000000
+      spriteID: 5a7637edbc858aa459e5e5a82d21f0f6
       internalID: -545456642322665108
       vertices: []
       indices: 
@@ -168,9 +168,9 @@ TextureImporter:
       name: laser_idle_2
       rect:
         serializedVersion: 2
-        x: 72
+        x: 64
         y: 0
-        width: 14
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -178,9 +178,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 82272614677ee8880800000000000000
+      spriteID: 072f02aa8dc04b54d879ee81574d3572
       internalID: -8606687342769311192
       vertices: []
       indices: 
@@ -190,19 +190,19 @@ TextureImporter:
       name: laser_idle_3
       rect:
         serializedVersion: 2
-        x: 104
-        y: 1
-        width: 14
-        height: 30
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1ae3e034ba663ebc0800000000000000
+      spriteID: d8f0ba1a7a1f2734ea9d4039a981c0c2
       internalID: -3755044778546413919
       vertices: []
       indices: 
@@ -212,19 +212,19 @@ TextureImporter:
       name: laser_idle_4
       rect:
         serializedVersion: 2
-        x: 136
-        y: 1
-        width: 14
-        height: 30
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 40226c95dcd817f60800000000000000
+      spriteID: 0488d572bdb8b5748a41fad8fbadcb5b
       internalID: 8030355523692274180
       vertices: []
       indices: 
@@ -234,9 +234,9 @@ TextureImporter:
       name: laser_idle_5
       rect:
         serializedVersion: 2
-        x: 168
+        x: 160
         y: 0
-        width: 14
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,9 +244,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6e8ce85f13922d1e0800000000000000
+      spriteID: f9a15fa186c471449bce8cf220caa269
       internalID: -2174630375516616474
       vertices: []
       indices: 
@@ -256,9 +256,9 @@ TextureImporter:
       name: laser_idle_6
       rect:
         serializedVersion: 2
-        x: 200
+        x: 192
         y: 0
-        width: 14
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -266,9 +266,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 907d071c8b7283fe0800000000000000
+      spriteID: 43af5514eac6bce489d40ccfcf0dfcef
       internalID: -1209172825476114679
       vertices: []
       indices: 
@@ -278,9 +278,9 @@ TextureImporter:
       name: laser_idle_7
       rect:
         serializedVersion: 2
-        x: 232
+        x: 224
         y: 0
-        width: 15
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -288,9 +288,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3df1c41394b620bb0800000000000000
+      spriteID: bc795ed5f0035564d975b6e288cc8d09
       internalID: -4971293076559749165
       vertices: []
       indices: 
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0524631a1471072459f804fbee7769f1
     internalID: 0
     vertices: []
     indices: 

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public bool _isGrounded;
     public bool _isOnWall;
-    private float _moveXInput;
+    public float _moveXInput;
     private float _moveYInput;
 
     private void Awake()
