@@ -103,10 +103,26 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimatior()
     {
-        _anim.SetFloat("VelocityX", Mathf.Abs(_moveXInput));
-        _anim.SetFloat("VelocityY", _rb.linearVelocityY);
-        _anim.SetBool("IsGrounded", _isGrounded);
-        _anim.SetBool("IsWallSliding", _currentPlayerState == PlayerState.OnWall);
+        if (_currentPlayerState == PlayerState.OnWall)
+        {
+            _anim.Play("WallSlide");
+        }
+        else if (!_isGrounded && _rb.linearVelocityY > 0f)
+        {
+            _anim.Play("Jump");
+        }
+        else if (!_isGrounded && _rb.linearVelocityY < 0f)
+        {
+            _anim.Play("Fall");
+        }
+        else if (Mathf.Abs(_moveXInput) > 0f)
+        {
+            _anim.Play("Run");
+        }
+        else
+        {
+            _anim.Play("Idle");
+        }
     }
 
     private void OnDrawGizmos()

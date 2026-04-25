@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c157ccd8c2855804ebd2b09ab313fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxStamina>k__BackingField: 10
+  <maxStamina>k__BackingField: 8
   _staminaLoseSpeed: 10
   _staminaRegenSpeed: 10
   _staminaRegenCooldown: 2
