@@ -702,6 +702,18 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2363786899428885995, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363786899428885995, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363786899428885995, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2457868087521620015, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -710,9 +722,45 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleSettings
       objectReference: {fileID: 0}
+    - target: {fileID: 2518235166975978106, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518235166975978106, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518235166975978106, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3179383728878388268, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
       propertyPath: m_Name
       value: SettingsPanel Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179383728878388268, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715702794812049802, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715702794812049802, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715702794812049802, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946313563550101481, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946313563550101481, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4195406684085333119, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
       propertyPath: m_Pivot.x
@@ -802,6 +850,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReturnToMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6445426846764680307, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445426846764680307, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7116273442716966189, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -857,6 +913,14 @@ PrefabInstance:
     - target: {fileID: 7349694087113204768, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161724260777474806, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161724260777474806, guid: ca59b855727fc45438423ae554cb7bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

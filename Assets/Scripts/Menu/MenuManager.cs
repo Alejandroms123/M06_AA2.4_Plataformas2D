@@ -43,12 +43,13 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleSettings()
     {
-        SoundManager.Instance.PlaySound(SoundType.Button);
         bool settingsActive = !_settingsPanel.activeSelf;
         _settingsPanel.SetActive(settingsActive);
         if (_isMainMenu)
             _otherUI.SetActive(!settingsActive);
         Time.timeScale = settingsActive ? 0f : 1f;
+        AudioListener.pause = false;
+        SoundManager.Instance.PlaySound(SoundType.Button);
     }
 
     public void Exit()

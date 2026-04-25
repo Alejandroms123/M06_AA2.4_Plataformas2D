@@ -4,8 +4,6 @@ public class MenuMusic : MonoBehaviour
 {
     public static MenuMusic Instance { get; private set; }
 
-    [SerializeField] private AudioSource _audioSource;
-
     private void Awake()
     {
         if (Instance == null)

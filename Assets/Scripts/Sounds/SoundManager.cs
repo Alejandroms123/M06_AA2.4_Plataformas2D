@@ -49,6 +49,7 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             _loopSource.ignoreListenerPause = true;
+            _audioSource.ignoreListenerPause = true;
             InitPool();
         }
         else Destroy(gameObject);
