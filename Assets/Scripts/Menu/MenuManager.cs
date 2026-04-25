@@ -1,0 +1,77 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MenuManager : MonoBehaviour
+{
+    public static MenuManager Instance { get; private set; }
+
+    [Header("Panels")]
+    [SerializeField] private GameObject _settingsPanel;
+    public GameObject _menuButtons;
+
+    private bool _isMainMenu => SceneManager.GetActiveScene().buildIndex == 0;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else { Destroy(gameObject); return; }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ToggleSettings();
+    }
+
+    public void Play() => StartCoroutine(LoadSceneAfterSound(1));
+    public void Credits() => StartCoroutine(LoadSceneAfterSound(2));
+
+    public void ReturnToMainMenu()
+    {
+        SoundManager.Instance.PlaySound(SoundType.Button);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
+
+    private IEnumerator LoadSceneAfterSound(int sceneIndex)
+    {
+        SoundManager.Instance.PlaySound(SoundType.Button);
+        yield return new WaitForSecondsRealtime(SoundManager.Instance.GetSoundDuration(SoundType.Button));
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void ToggleSettings()
+    {
+        SoundManager.Instance.PlaySound(SoundType.Button);
+        bool settingsActive = !_settingsPanel.activeSelf;
+        _settingsPanel.SetActive(settingsActive);
+        if (_isMainMenu)
+            _menuButtons.SetActive(!settingsActive);
+        Time.timeScale = settingsActive ? 0f : 1f;
+    }
+
+    public void OpenSettings()
+    {
+        SoundManager.Instance.PlaySound(SoundType.Button);
+        _settingsPanel.SetActive(true);
+        if (_isMainMenu)
+            _menuButtons.SetActive(false);
+        Time.timeScale = 0f;
+    }
+
+    public void CloseSettings()
+    {
+        SoundManager.Instance.PlaySound(SoundType.Button);
+        _settingsPanel.SetActive(false);
+        if (_isMainMenu)
+            _menuButtons.SetActive(true);
+        Time.timeScale = 1f;
+    }
+
+    public void Exit()
+    {
+        SoundManager.Instance.PlaySound(SoundType.Button);
+        Application.Quit();
+    }
+}
