@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource[] _audioPool;
     private int _poolIndex = 0;
     private Coroutine _loopFade;
+    private Coroutine _musicFade;
     private AudioClip _lastClip;
 
     private void Awake()
@@ -47,9 +48,7 @@ public class SoundManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
             _loopSource.ignoreListenerPause = true;
-
             InitPool();
         }
         else Destroy(gameObject);
@@ -79,22 +78,19 @@ public class SoundManager : MonoBehaviour
 
     public void SetEffectsVolume(float value)
     {
-        _audioMixer.SetFloat("EffectsVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20f);
+        _audioMixer.SetFloat("SfxVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20f);
     }
 
     private void InitPool()
     {
         _audioPool = new AudioSource[_poolSize];
-
         for (int i = 0; i < _poolSize; i++)
         {
             GameObject go = new GameObject("AudioPool_" + i);
             go.transform.parent = transform;
-
             AudioSource source = go.AddComponent<AudioSource>();
             source.playOnAwake = false;
             source.outputAudioMixerGroup = _effectsGroup;
-
             _audioPool[i] = source;
         }
     }
@@ -115,12 +111,12 @@ public class SoundManager : MonoBehaviour
         if (data == null) return;
 
         AudioClip clip = GetRandomClip(data);
+        if (clip == null) return;
 
         if (data.is3D)
         {
             AudioSource source = GetPooledSource();
             Vector3 pos = position ?? Camera.main.transform.position;
-
             source.transform.position = new Vector3(pos.x, pos.y, Camera.main.transform.position.z);
             source.clip = clip;
             source.volume = data.volume;
@@ -144,6 +140,7 @@ public class SoundManager : MonoBehaviour
         if (data == null) return;
 
         AudioClip clip = GetRandomClip(data);
+        if (clip == null) return;
 
         if (_loopFade != null) StopCoroutine(_loopFade);
 
@@ -156,7 +153,6 @@ public class SoundManager : MonoBehaviour
         {
             Vector3 pos = position ?? Camera.main.transform.position;
             _loopSource.transform.position = new Vector3(pos.x, pos.y, Camera.main.transform.position.z);
-
             _loopSource.spatialBlend = 1f;
             _loopSource.minDistance = data.minDistance;
             _loopSource.maxDistance = data.maxDistance;
@@ -176,8 +172,9 @@ public class SoundManager : MonoBehaviour
         if (data == null) return;
 
         AudioClip clip = GetRandomClip(data);
+        if (clip == null) return;
 
-        if (_loopFade != null) StopCoroutine(_loopFade);
+        if (_musicFade != null) StopCoroutine(_musicFade);
 
         _musicSource.clip = clip;
         _musicSource.pitch = data.randomizePitch ? Random.Range(0.9f, 1.1f) : data.pitch;
@@ -188,7 +185,6 @@ public class SoundManager : MonoBehaviour
         {
             Vector3 pos = position ?? Camera.main.transform.position;
             _musicSource.transform.position = new Vector3(pos.x, pos.y, Camera.main.transform.position.z);
-
             _musicSource.spatialBlend = 1f;
             _musicSource.minDistance = data.minDistance;
             _musicSource.maxDistance = data.maxDistance;
@@ -208,6 +204,15 @@ public class SoundManager : MonoBehaviour
         {
             if (_loopFade != null) StopCoroutine(_loopFade);
             _loopFade = StartCoroutine(FadeOut(_loopSource));
+        }
+    }
+
+    public void StopMusic()
+    {
+        if (_musicSource.isPlaying)
+        {
+            if (_musicFade != null) StopCoroutine(_musicFade);
+            _musicFade = StartCoroutine(FadeOut(_musicSource));
         }
     }
 
@@ -231,13 +236,21 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip GetRandomClip(SoundData data)
     {
+        if (data.clips == null || data.clips.Length == 0)
+        {
+            Debug.LogWarning($"[SoundManager] No hay clips para {data.soundType}");
+            return null;
+        }
+
         if (data.clips.Length == 1) return data.clips[0];
 
         AudioClip clip;
+        int attempts = 0;
         do
         {
             clip = data.clips[Random.Range(0, data.clips.Length)];
-        } while (clip == _lastClip);
+            attempts++;
+        } while (clip == _lastClip && attempts < 10);
 
         _lastClip = clip;
         return clip;
@@ -246,16 +259,12 @@ public class SoundManager : MonoBehaviour
     public float GetSoundDuration(SoundType soundType)
     {
         SoundData data = GetData(soundType);
-        if (data == null || data.clips == null || data.clips.Length == 0)
-            return 0f;
+        if (data == null || data.clips == null || data.clips.Length == 0) return 0f;
 
         float maxLength = 0f;
-
         foreach (var clip in data.clips)
-        {
             if (clip != null && clip.length > maxLength)
                 maxLength = clip.length;
-        }
 
         return maxLength;
     }

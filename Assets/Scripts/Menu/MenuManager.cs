@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Panels")]
     [SerializeField] private GameObject _settingsPanel;
-    public GameObject _menuButtons;
+    public GameObject _otherUI;
 
     private bool _isMainMenu => SceneManager.GetActiveScene().buildIndex == 0;
 
@@ -47,26 +47,8 @@ public class MenuManager : MonoBehaviour
         bool settingsActive = !_settingsPanel.activeSelf;
         _settingsPanel.SetActive(settingsActive);
         if (_isMainMenu)
-            _menuButtons.SetActive(!settingsActive);
+            _otherUI.SetActive(!settingsActive);
         Time.timeScale = settingsActive ? 0f : 1f;
-    }
-
-    public void OpenSettings()
-    {
-        SoundManager.Instance.PlaySound(SoundType.Button);
-        _settingsPanel.SetActive(true);
-        if (_isMainMenu)
-            _menuButtons.SetActive(false);
-        Time.timeScale = 0f;
-    }
-
-    public void CloseSettings()
-    {
-        SoundManager.Instance.PlaySound(SoundType.Button);
-        _settingsPanel.SetActive(false);
-        if (_isMainMenu)
-            _menuButtons.SetActive(true);
-        Time.timeScale = 1f;
     }
 
     public void Exit()

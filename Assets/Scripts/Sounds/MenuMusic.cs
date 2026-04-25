@@ -4,6 +4,8 @@ public class MenuMusic : MonoBehaviour
 {
     public static MenuMusic Instance { get; private set; }
 
+    [SerializeField] private AudioSource _audioSource;
+
     private void Awake()
     {
         if (Instance == null)
@@ -16,10 +18,5 @@ public class MenuMusic : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
-
-    private void Start()
-    {
-        SoundManager.Instance.PlayMusic(SoundType.MenuMusic);
     }
 }

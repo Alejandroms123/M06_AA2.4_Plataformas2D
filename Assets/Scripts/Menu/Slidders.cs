@@ -11,32 +11,31 @@ public class Sliders : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _defaultMusicVolume = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _defaultEffectsVolume = 0.5f;
 
-    private void Start()
+    private void OnEnable()
     {
-        _masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", _defaultMasterVolume);
-        _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", _defaultMusicVolume);
-        _effecsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume", _defaultEffectsVolume);
-
-        SoundManager.Instance.SetMasterVolume(_masterVolumeSlider.value);
-        SoundManager.Instance.SetMusicVolume(_musicVolumeSlider.value);
-        SoundManager.Instance.SetEffectsVolume(_effecsVolumeSlider.value);
+        _masterVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterVolume", _defaultMasterVolume));
+        _musicVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MusicVolume", _defaultMusicVolume));
+        _effecsVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("EffectsVolume", _defaultEffectsVolume));
     }
 
     public void OnMasterVolumeChanged(float value)
     {
         PlayerPrefs.SetFloat("MasterVolume", value);
+        PlayerPrefs.Save();
         SoundManager.Instance.SetMasterVolume(value);
     }
 
     public void OnMusicVolumeChanged(float value)
     {
         PlayerPrefs.SetFloat("MusicVolume", value);
+        PlayerPrefs.Save();
         SoundManager.Instance.SetMusicVolume(value);
     }
 
     public void OnEffectsVolumeChanged(float value)
     {
         PlayerPrefs.SetFloat("EffectsVolume", value);
+        PlayerPrefs.Save();
         SoundManager.Instance.SetEffectsVolume(value);
     }
 }
