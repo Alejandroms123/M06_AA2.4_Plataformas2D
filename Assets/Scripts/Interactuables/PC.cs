@@ -1,19 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 public class PC : MonoBehaviour
 {
     bool isPlayerNear = false;
     public GameObject trampa;
+    [SerializeField] private AudioSource _trapSound;
+    [SerializeField] private AudioSource _computerSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Entra en el PC");
         isPlayerNear = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Sale del PC");
         isPlayerNear = true;
     }
 
@@ -21,9 +22,17 @@ public class PC : MonoBehaviour
     {
         if (isPlayerNear && (Input.GetKeyDown(KeyCode.E)))
         {
-            Debug.Log("Trampa desactivada");
-            trampa.GetComponent<Animator>().Play("Laser_Desactivated");
-            trampa.GetComponent<Collider2D>().enabled = false;
+            _computerSound.Stop();
+            StartCoroutine(DesactivarTrampa());
         }
+    }
+
+    private IEnumerator DesactivarTrampa()
+    {
+        yield return new WaitForSeconds(0.5f);
+        trampa.GetComponent<Animator>().Play("Laser_Desactivated");
+        trampa.GetComponent<AudioSource>().Stop();
+        trampa.GetComponent<Collider2D>().enabled = false;
+        _trapSound.Play();
     }
 }

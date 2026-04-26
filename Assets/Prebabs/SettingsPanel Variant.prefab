@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6210740330634280894, guid: 0814ab90f63ebe046bbc8bc8d1c44d41, type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 77ce9e63cdbe49c429bc3c940141def3, type: 2}
     - target: {fileID: 6845336283448809104, guid: 0814ab90f63ebe046bbc8bc8d1c44d41, type: 3}
       propertyPath: m_Name
       value: SettingsPanel Variant
