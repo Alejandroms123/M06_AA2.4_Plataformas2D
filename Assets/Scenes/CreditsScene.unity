@@ -1149,7 +1149,8 @@ PrefabInstance:
       propertyPath: _settingsPanel
       value: 
       objectReference: {fileID: 1481409713}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 92858854009450776, guid: 040c8c8c14549564d85cb09fd8a8f0c8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2811564747562578423, guid: 040c8c8c14549564d85cb09fd8a8f0c8, type: 3}
