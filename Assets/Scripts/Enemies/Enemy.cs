@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Collider2D _col;
     [SerializeField] protected Rigidbody2D _rb;
     [SerializeField] protected Animator _anim;
+    [SerializeField] protected AudioSource _deathSound;
+    [SerializeField] protected ParticleSystem _deathParticles;
     [SerializeField] protected LayerMask _playerLyr;
 
     [Space(10), Header("Patrol Properties")]
@@ -75,9 +77,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void OnDisable()
+    public void Die()
     {
         StopAllCoroutines();
+
+        if (_deathParticles != null)
+        {
+            _deathParticles.transform.parent = null;
+            _deathParticles.Play();
+            Destroy(_deathParticles.gameObject, 2f);
+        }
+
+        if (_deathSound != null)
+        {
+            AudioSource.PlayClipAtPoint(_deathSound.clip, transform.position);
+        }
+
+        gameObject.SetActive(false);
     }
 
     protected virtual void OnEnterState(EnemyStates state) { }

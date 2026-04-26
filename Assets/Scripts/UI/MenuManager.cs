@@ -59,4 +59,10 @@ public class MenuManager : MonoBehaviour
         _audioSource.Play();
         Application.Quit();
     }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(LoadSceneAfterSound(SceneManager.GetActiveScene().buildIndex));
+    }
 }

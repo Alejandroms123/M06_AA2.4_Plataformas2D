@@ -7,6 +7,7 @@ public class PC : MonoBehaviour
     public GameObject trampa;
     [SerializeField] private AudioSource _trapSound;
     [SerializeField] private AudioSource _computerSound;
+    [SerializeReference] private ParticleSystem _trapParticles;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,6 +34,7 @@ public class PC : MonoBehaviour
         trampa.GetComponent<Animator>().Play("Laser_Desactivated");
         trampa.GetComponent<AudioSource>().Stop();
         trampa.GetComponent<Collider2D>().enabled = false;
+        _trapParticles.Stop();
         _trapSound.Play();
     }
 }

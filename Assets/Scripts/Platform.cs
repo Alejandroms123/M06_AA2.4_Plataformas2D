@@ -4,9 +4,8 @@ public class Platform : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("player parented");
             collision.transform.SetParent(transform);
         }
     }
@@ -15,7 +14,6 @@ public class Platform : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("player UNparented");
             collision.transform.SetParent(null);
         }
     }

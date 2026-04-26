@@ -1,6 +1,6 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 public class LifesManager : MonoBehaviour
 {
     public int currentLifes;
@@ -42,11 +42,8 @@ public class LifesManager : MonoBehaviour
         }
         if (currentLifes <= 0)
         {
-            transform.position = spawnLocation;
-            _rb.linearVelocity = Vector2.zero;
-            currentLifes = maxLifes;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
     }
     public void getHurt(int damage)
     {
