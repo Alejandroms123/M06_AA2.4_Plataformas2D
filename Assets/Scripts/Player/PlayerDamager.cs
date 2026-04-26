@@ -36,6 +36,7 @@ public class PlayerDamager : MonoBehaviour
 
     public void Attack()
     {
+        StaminaManager.instance.LoseStamina(999f);
         _attackCol.enabled = true;
         StartCoroutine(RunAfterTime(_attackDuration, StopAttack));
     }
