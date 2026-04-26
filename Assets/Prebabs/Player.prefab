@@ -532,6 +532,7 @@ MonoBehaviour:
   currentLifes: 0
   maxLifes: 3
   _rb: {fileID: 5758982443546295803}
+  _invulnerabilityDuration: 0.3
   ZeroLifeRemaining:
     m_PersistentCalls:
       m_Calls:
@@ -688,6 +689,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  _isInvulnerable: 0
 --- !u!114 &2470647316854194065
 MonoBehaviour:
   m_ObjectHideFlags: 0

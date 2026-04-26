@@ -4,8 +4,10 @@ public class Damagers : MonoBehaviour
 {
     public int damage;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        if (LifesManager.Instance._isInvulnerable) return;
+
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<LifesManager>().getHurt(damage);

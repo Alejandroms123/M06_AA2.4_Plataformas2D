@@ -43,10 +43,10 @@ public class CountdownTimer : MonoBehaviour
     {
         if (playerObject != null)
         {
-            playerObject.SetActive(false); // Muere el Player 
+            playerObject.SetActive(false);
         }
 
-        Invoke(nameof(RestartScene), 1f); // Espera 1 segundo y reinicia
+        Invoke(nameof(RestartScene), 1f);
     }
 
     private void RestartScene() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }

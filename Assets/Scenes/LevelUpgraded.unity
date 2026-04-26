@@ -1348,6 +1348,10 @@ PrefabInstance:
       propertyPath: Lookahead.Smoothing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5319067862949692857, guid: a0c414cd09eaf9a4abbb9c6175816018, type: 3}
+      propertyPath: Composition.HardLimits.Size.y
+      value: 0.6030829
+      objectReference: {fileID: 0}
     - target: {fileID: 6188429353904897862, guid: a0c414cd09eaf9a4abbb9c6175816018, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8400004
@@ -79500,8 +79504,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 200, y: 150}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 210}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1795095283
 MonoBehaviour:
@@ -79523,7 +79527,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10.0
+  m_text: '120.0
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3708524f30b6ff94781c3879ffcc74d0, type: 2}
   m_sharedMaterial: {fileID: 8571201219180508652, guid: 3708524f30b6ff94781c3879ffcc74d0, type: 2}
@@ -84986,12 +84993,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920592044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9c76cda230619941a0698585e9e09f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 10
+  timeLimit: 120
   timerText: {fileID: 1795095283}
   playerController: {fileID: 2058939758}
   playerObject: {fileID: 613114198}

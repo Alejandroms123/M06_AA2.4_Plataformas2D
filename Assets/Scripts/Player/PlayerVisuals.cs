@@ -23,8 +23,6 @@ public class PlayerVisuals : MonoBehaviour
         {
             animator.Play("Player_Idle");
         }
-
-
     }
 
     public void getHurt()
@@ -44,5 +42,4 @@ public class PlayerVisuals : MonoBehaviour
         animator.ResetTrigger("Attack");
         stopOtherAnims = false;
     }
-
 }
